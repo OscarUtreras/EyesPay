@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
-import { StackActions, NavigationActions } from 'react-navigation'
 
 export class Home extends Component {
   render() {
