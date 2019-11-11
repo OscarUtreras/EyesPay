@@ -7,7 +7,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "boolbase": "^1.0.0",
+    "css-select": "^2.1.0",
+    "css-tree": "^1.0.0-alpha.37",
+    "css-what": "^3.2.1",
+    "dom-serializer": "^0.2.2",
+    "domelementtype": "^2.0.1",
+    "domhandler": "^3.0.0",
+    "domutils": "^2.0.0",
+    "entities": "^2.0.0",
     "lodash": "^4.17.15",
+    "mdn-data": "^2.0.4",
+    "nth-check": "^1.0.2",
     "paths-js": "^0.4.10",
     "point-in-polygon": "^1.0.1",
     "react": "^16.8.6",
@@ -20,7 +31,8 @@
     "react-native-svg": "^9.13.3",
     "react-native-vector-icons": "^6.4.2",
     "react-native-web": "^0.11.2",
-    "react-navigation": "^3.9.1"
+    "react-navigation": "^3.9.1",
+    "source-map": "^0.7.3"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",

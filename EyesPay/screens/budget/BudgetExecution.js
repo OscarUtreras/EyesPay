@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Text, View, FlatList, Dimensions, StyleSheet, ActivityIndicator} from 'react-native';
-import {LineChart} from "react-native-chart-kit";
+import {PieChart} from "react-native-chart-kit";
 
 
 const {width, height} = Dimensions.get('window')
@@ -47,6 +47,15 @@ const {width, height} = Dimensions.get('window')
   };
 
   render() {
+    const chartConfig = {
+      backgroundGradientFrom: "#1E2923",
+      backgroundGradientFromOpacity: 0,
+      backgroundGradientTo: "#08130D",
+      backgroundGradientToOpacity: 0.5,
+      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+      strokeWidth: 2, // optional, default 3
+      barPercentage: 0.5
+    };
     if(this.state.loading){
       return(
         <View style={{flex: 1, padding: 20}}>
@@ -57,52 +66,30 @@ const {width, height} = Dimensions.get('window')
     return (
       
       <View style={styles.container}>
-      <View>
-  <Text>Bezier Line Chart</Text>
-  <LineChart
-    data={{
-      labels: ["January", "February", "March", "April", "May", "June"],
-      datasets: [
-        {
-          data: [
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100
-          ]
-        }
-      ]
-    }}
-    width={Dimensions.get("window").width} // from react-native
-    height={220}
-    yAxisLabel={"$"}
-    yAxisSuffix={"k"}
-    chartConfig={{
-      backgroundColor: "#e26a00",
-      backgroundGradientFrom: "#fb8c00",
-      backgroundGradientTo: "#ffa726",
-      decimalPlaces: 2, // optional, defaults to 2dp
-      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      style: {
-        borderRadius: 16
-      },
-      propsForDots: {
-        r: "6",
-        strokeWidth: "2",
-        stroke: "#ffa726"
-      }
-    }}
-    bezier
-    style={{
-      marginVertical: 8,
-      borderRadius: 16
-    }}
-  />
-</View>
         <View style={styles.general}>
+          <PieChart
+            data={[
+              {
+                name: "Seoul",
+                population: 21500000,
+                color: "rgba(131, 167, 234, 1)",
+                legendFontColor: "#7F7F7F",
+                legendFontSize: 15
+              },
+              {
+                name: "Toronto",
+                population: 2800000,
+                color: "#F00",
+                legendFontColor: "#7F7F7F",
+                legendFontSize: 15
+              }
+            ]}
+            width={width}
+            height={height*1.4/6}
+            chartConfig={chartConfig}
+            accessor="population"
+            backgroundColor="transparent"
+          />
           <Text>{this.state.general_budget.current + ' / ' + this.state.general_budget.max}</Text>
           <Text>{global.categories[0].name}</Text>
         </View>
